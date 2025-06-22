@@ -1,0 +1,257 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1300;
+  background: white;
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 60px;
+}
+
+.scrolled {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  height: 70px;
+}
+
+.navLeft {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.navLinks {
+  display: flex;
+  gap: 40px;
+}
+
+.navLink {
+  text-decoration: none;
+  color: rgb(2, 2, 2);
+  font-weight: 600;
+  font-size: 1.2rem;
+  font-family: "Helvetica Neue", sans-serif;
+  position: relative;
+  padding: 10px 0;
+  transition: all 0.3s ease;
+}
+
+.navLink:hover {
+  color: #050404;
+  transform: translateY(-2px);
+}
+
+.navLink::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+  transition: width 0.3s ease;
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.navLogo {
+  height: auto !important;
+  width: auto !important;
+  max-height: 50px;
+  transition: transform 0.3s ease;
+  transform: scale(1.2);
+}
+
+.navLogo:hover {
+  transform: scale(1.3);
+}
+
+/* Mobile Menu */
+.menuIcon {
+  color: rgb(0, 0, 0) !important;
+  padding: 8px !important;
+  z-index: 1301;
+}
+
+/* Drawer Styles */
+.drawerPaper {
+  width: 280px !important;
+  background: white !important;
+  backdrop-filter: blur(15px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+  z-index: 1300 !important;
+}
+
+.drawerContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+
+.closeIcon {
+  color: rgb(0, 0, 0) !important;
+  align-self: flex-end;
+  margin: 16px;
+  z-index: 1301;
+}
+
+.drawerList {
+  flex: 1;
+  padding: 20px 0 !important;
+  list-style: none;
+  margin: 0;
+}
+
+.drawerListItem {
+  padding: 0 !important;
+  margin-bottom: 12px;
+}
+
+.drawerLink {
+  display: block;
+  width: 100%;
+  padding: 20px 24px;
+  text-decoration: none;
+  color: rgb(6, 1, 1);
+  font-weight: 600;
+  font-size: 1.3rem;
+  font-family: "Helvetica Neue", sans-serif;
+  transition: all 0.3s ease;
+  /* //border-radius: 0 25px 25px 0; */
+  margin-right: 20px;
+}
+
+.drawerLink:hover {
+  background: rgba(6, 6, 6, 0.1);
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 0 40px;
+    height: 70px;
+  }
+
+  .scrolled {
+    height: 65px;
+  }
+
+  .navLinks {
+    display: none;
+    gap: 30px;
+  }
+
+  .navLink {
+    font-size: 1.5rem;
+  }
+
+  .navLogo {
+    max-height: 45px;
+    padding-right: 16px;
+  }
+
+  .menuIcon {
+    display: inline-flex !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 20px;
+    height: 60px;
+  }
+
+  .scrolled {
+    height: 60px;
+  }
+
+  .navLinks {
+    display: none;
+  }
+
+  .navLogo {
+    max-height: 45px;
+    width: auto;
+    padding-right: 16px;
+  }
+
+  .menuIcon {
+    display: inline-flex !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0 15px;
+    height: 55px;
+  }
+
+  .scrolled {
+    height: 55px;
+  }
+
+  .navLogo {
+    max-height: 40px;
+    width: auto;
+    padding-right: 16px;
+  }
+}
+
+/* Focus and accessibility styles */
+.navLink:focus,
+.menuIcon:focus,
+.drawerLink:focus {
+  outline: 2px solid #4ecdc4;
+  outline-offset: 2px;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .navbar {
+    background: #fff !important;
+    border-bottom: 2px solid #000 !important;
+  }
+  .navLink {
+    color: #000 !important;
+  }
+  .navLink::after {
+    background: #000 !important;
+  }
+  .drawerPaper {
+    background: #fff !important;
+    border-right: 2px solid #000 !important;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .navbar,
+  .navLogo,
+  .navLink,
+  .navLogo:hover {
+    transition: none !important;
+  }
+  .navLink::after {
+    transition: none !important;
+  }
+}

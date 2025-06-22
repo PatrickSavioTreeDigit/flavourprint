@@ -1,0 +1,139 @@
+.sectionSeven {
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 2rem 1rem;
+}
+
+.sectionSevenContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+}
+
+.footerLinks {
+  text-align: left;
+  color: white;
+  width: 100%;
+}
+
+.footerFirstLine,
+.footerSecondLine {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footerItem {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.footerLink {
+  color: #ffffff !important;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footerLink:hover {
+  color: #ffffff !important;
+  opacity: 0.8;
+}
+
+.separator {
+  color: #ffffff;
+  font-size: 0.9rem;
+}
+
+.footerCopyright {
+  font-size: 0.9rem;
+  color: white;
+  margin-left: 0.5rem;
+}
+
+.footerDisclaimer {
+  font-size: 1rem;
+  color: white;
+  opacity: 0.8;
+}
+
+.footerSvg {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .footerSvg {
+    top: 1rem;
+    right: 1rem;
+    transform: scale(0.75);
+  }
+
+  .footerLink {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .footerCopyright {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .footerDisclaimer {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .footerFirstLine,
+  .footerSecondLine {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .footerItem {
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 0.3rem;
+  }
+
+  .footerItem:last-child {
+    margin-bottom: 0;
+  }
+
+  .footerLink {
+    font-size: 0.8rem;
+    line-height: 1.8;
+  }
+
+  .separator {
+    margin-left: 0.4rem;
+    font-size: 0.8rem;
+  }
+
+  .footerCopyright,
+  .footerDisclaimer {
+    font-size: 0.8rem;
+    line-height: 1.8;
+    margin-bottom: 0.4rem;
+  }
+
+  .footerSvg {
+    top: 0.5rem;
+    right: 0.5rem;
+    transform: scale(0.6);
+  }
+}

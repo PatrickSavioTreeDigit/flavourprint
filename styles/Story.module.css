@@ -1,0 +1,249 @@
+.sectionThree {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  padding: 10px 0;
+  overflow: hidden;
+}
+
+.sectionThreeVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.sectionThreeOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: rgba(194, 89, 89, 0.4); */
+  z-index: 2;
+}
+
+.sectionThreeContainer {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.sectionThreeContent {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 60px;
+  gap: 80px;
+  min-height: calc(100vh - 80px);
+  text-align: left;
+}
+
+.textSection {
+  flex: 1;
+  color: white;
+  max-width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.sectionTitle {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: rgb(6, 1, 1);
+  line-height: 1.2;
+  text-align: left;
+}
+
+.textSection .sectionTitle {
+  font-family: "Helvetica Neue", sans-serif;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-size: 5rem;
+}
+
+.textSection .sectionDescription {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 117%; /* Approx. 125% for better readability */
+  letter-spacing: -0.4px; /* Fixes the -4% issue, which is invalid */
+  color: #000; /* Ensures pure black text */
+  width: 75vh;
+}
+
+.textSection .sectionDescriptionBold {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.6rem; /* Slightly larger for clear visual match */
+  font-weight: 700;
+  line-height: 1.25; /* Tighter line spacing */
+  color: #000; /* Use solid black for clarity */
+  margin-bottom: 1rem;
+  text-align: left;
+  width: 75vh;
+  letter-spacing: -0.3px; /* Slight compression for compact look */
+}
+
+.sectionDescription {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: rgb(12, 2, 2);
+  text-align: left;
+}
+
+.sectionDescriptionBold {
+  font-size: 6rem;
+  width: 50vh;
+  font-weight: 800;
+  line-height: 1.6;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: rgb(10, 1, 1);
+  text-align: left;
+  font-family: "Helvetica Neue";
+}
+
+.imageSection {
+  flex: 1;
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px 0;
+  overflow: visible;
+}
+
+.imageWrapper {
+  width: 100%;
+  max-width: 900px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+  padding-bottom: 20px;
+}
+
+.sectionImage {
+  width: 190%;
+  transform: scale(1.5);
+  transition: transform 0.3s ease;
+  object-fit: contain;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .sectionThreeContent {
+    flex-direction: column;
+    padding: 20px 40px;
+    gap: 40px;
+  }
+
+  .textSection {
+    max-width: 100%;
+  }
+
+  .textSection .sectionDescription,
+  .textSection .sectionDescriptionBold {
+    width: 100%;
+  }
+
+  .imageSection {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .sectionThree {
+    padding: 0 0 30px 0 !important;
+    margin-top: 0 !important;
+  }
+
+  .sectionThreeContent {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    padding: 15px;
+  }
+
+  .sectionTitle {
+    font-size: 3rem;
+  }
+
+  .sectionDescription {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .sectionDescriptionBold {
+    font-size: 2rem;
+  }
+
+  .sectionImage {
+    width: 120%;
+    height: 320px;
+    transform: scale(1.2);
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  .imageSection {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .imageWrapper {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionThree {
+    padding: 20px 0;
+  }
+
+  .sectionTitle {
+    font-size: 2.5rem;
+  }
+
+  .sectionDescription {
+    font-size: 0.9rem;
+  }
+
+  .sectionDescriptionBold {
+    font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1180px) {
+  .sectionDescription {
+    font-weight: 700;
+  }
+  .sectionImage {
+    width: 180%;
+    height: 500px;
+  }
+}
