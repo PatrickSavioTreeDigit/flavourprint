@@ -21,6 +21,7 @@
     "swiper": "^11.2.8"
   },
   "devDependencies": {
+    "@next/swc-win32-x64-msvc": "^15.3.4",
     "eslint": "^8.56.0",
     "eslint-config-next": "14.1.0"
   }

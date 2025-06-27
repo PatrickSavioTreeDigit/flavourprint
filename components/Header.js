@@ -1,14 +1,17 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { Drawer, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import styles from "../styles/Header.module.css";
 
-export default function Header( props, navContent ) {
+export default function Header(props) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeTargetId, setActiveTargetId] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +25,29 @@ export default function Header( props, navContent ) {
     setMobileOpen(!mobileOpen);
   };
 
+  const handleNavClick = (event, targetId) => {
+    event.preventDefault();
+
+    if (activeTargetId === targetId) {
+      router.push("/");
+      setActiveTargetId(null);
+    } else {
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        window.history.pushState({}, "", `/${targetId}`);
+        targetElement.scrollIntoView({ behavior: "smooth" });
+        setActiveTargetId(targetId);
+      } else {
+        router.push(`/#${targetId}`);
+        setActiveTargetId(targetId);
+      }
+    }
+
+    if (mobileOpen) {
+      toggleDrawer();
+    }
+  };
+
   return (
     <>
       <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}>
@@ -30,7 +56,7 @@ export default function Header( props, navContent ) {
           <IconButton
             onClick={toggleDrawer}
             className={styles.menuIcon}
-            aria-label="menu"
+            aria-label="Toggle navigation menu"
             sx={{ display: { xs: "inline-flex", md: "none" } }}
           >
             <MenuIcon />
@@ -38,13 +64,25 @@ export default function Header( props, navContent ) {
 
           {/* Desktop links */}
           <div className={styles.navLinks}>
-            <a href="#story" className={styles.navLink}>
+            <a
+              href="/story"
+              className={styles.navLink}
+              onClick={(e) => handleNavClick(e, "story")}
+            >
               {props.content.text1}
             </a>
-            <a href="#about" className={styles.navLink}>
+            <a
+              href="/technologies"
+              className={styles.navLink}
+              onClick={(e) => handleNavClick(e, "technologies")}
+            >
               {props.content.text2}
             </a>
-            <a href="#services" className={styles.navLink}>
+            <a
+              href="/contact"
+              className={styles.navLink}
+              onClick={(e) => handleNavClick(e, "contact")}
+            >
               {props.content.text3}
             </a>
           </div>
@@ -53,13 +91,11 @@ export default function Header( props, navContent ) {
         <div className={styles.navRight}>
           <Link href="/" className={styles.logoLink}>
             <Image
-              loader={() => "https:" + props.content.image.fields.file.url}
               src={"https:" + props.content.image.fields.file.url}
               alt="FLAVOURPRINTLAB Logo"
               width={230}
               height={40}
               className={styles.navLogo}
-              priority
             />
           </Link>
         </div>
@@ -83,27 +119,27 @@ export default function Header( props, navContent ) {
           <ul className={styles.drawerList}>
             <li className={styles.drawerListItem}>
               <a
-                href="#story"
+                href="/story"
                 className={styles.drawerLink}
-                onClick={toggleDrawer}
+                onClick={(e) => handleNavClick(e, "story")}
               >
                 {props.content.text1}
               </a>
             </li>
             <li className={styles.drawerListItem}>
               <a
-                href="#about"
+                href="/technologies"
                 className={styles.drawerLink}
-                onClick={toggleDrawer}
+                onClick={(e) => handleNavClick(e, "technologies")}
               >
                 {props.content.text2}
               </a>
             </li>
             <li className={styles.drawerListItem}>
               <a
-                href="#services"
+                href="/contact"
                 className={styles.drawerLink}
-                onClick={toggleDrawer}
+                onClick={(e) => handleNavClick(e, "contact")}
               >
                 {props.content.text3}
               </a>

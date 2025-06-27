@@ -1,18 +1,16 @@
 import { useState } from "react";
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import styles from "../styles/Carousel.module.css";
 import Typography from "@mui/material/Typography";
+import { useRouter } from "next/router";
 
-export default function XCarousel(props, technologyCarousel) {
-  const [activeIndex, setActiveIndex] = useState(0);
+export default function XCarousel(props) {
   const [swiperInstance, setSwiperInstance] = useState(null);
-
-  const handleSlideChange = (swiper) => {
-    setActiveIndex(swiper.realIndex);
-  };
+  const router = useRouter();
 
   const handleNextClick = () => {
     if (swiperInstance) {
@@ -60,15 +58,18 @@ export default function XCarousel(props, technologyCarousel) {
           }}
           modules={[Navigation]}
           className={styles.x_carousel_swiper_container}
-          onSlideChange={handleSlideChange}
           onSwiper={setSwiperInstance}
-          speed={700}
+          speed={600}
           spaceBetween={30}
           allowTouchMove={true}
           watchSlidesProgress={true}
         >
           {/* Slide 1 */}
-          <SwiperSlide className={styles.x_carousel_slide} data-index={0}>
+          <SwiperSlide
+            className={styles.x_carousel_slide}
+            data-index={0}
+            onClick={() => router.push("/whisky")}
+          >
             <div
               aria-label="What's Your Whisky?"
               role="button"
@@ -85,7 +86,8 @@ export default function XCarousel(props, technologyCarousel) {
                       loop
                       playsInline
                       className={styles.x_slide_video}
-                      preload="auto"
+                      preload="metadata"
+                      loading="lazy"
                       onLoadedData={(e) => {
                         e.target.style.opacity = 1;
                       }}
@@ -98,13 +100,17 @@ export default function XCarousel(props, technologyCarousel) {
                   </div>
                 </figure>
               </div>
-              <div className={styles.x_slide_text_container}>
+              {/* <div className={styles.x_slide_text_container}>
                 <p className={styles.x_slide_text}>{props.content.text2}</p>
-              </div>
+              </div> */}
             </div>
           </SwiperSlide>
           {/* Slide 2 */}
-          <SwiperSlide className={styles.x_carousel_slide} data-index={1}>
+          <SwiperSlide
+            className={styles.x_carousel_slide}
+            data-index={1}
+            onClick={() => router.push("/tequila")}
+          >
             <div
               aria-label="What's Your Tequila?"
               role="button"
@@ -115,20 +121,13 @@ export default function XCarousel(props, technologyCarousel) {
                 <figure className={styles.x_slide_image_wrapper}>
                   <div className={styles.shadow_layer} />
                   <div className={styles.video_wrapper}>
-                    <img
+                    <Image
                       alt="What's Your Tequila?"
-                      loader={() =>
-                        "https:" + props.content.image2.fields.file.url
-                      }
                       src={"https:" + props.content.image2.fields.file.url}
                       className={styles.x_slide_image}
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        position: "relative",
-                        zIndex: "2",
-                      }}
+                      fill
+                      sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                      objectFit="cover"
                     />
                     <div className={styles.video_head}>
                       <h2>{props.content.text3}</h2>
@@ -136,13 +135,17 @@ export default function XCarousel(props, technologyCarousel) {
                   </div>
                 </figure>
               </div>
-              <div className={styles.x_slide_text_container}>
+              {/* <div className={styles.x_slide_text_container}>
                 <p className={styles.x_slide_text}>{props.content.text3}</p>
-              </div>
+              </div> */}
             </div>
           </SwiperSlide>
           {/* Slide 3 */}
-          <SwiperSlide className={styles.x_carousel_slide} data-index={2}>
+          <SwiperSlide
+            className={styles.x_carousel_slide}
+            data-index={2}
+            onClick={() => router.push("/beer")}
+          >
             <div
               aria-label="What's Your Beer?"
               role="button"
@@ -159,7 +162,8 @@ export default function XCarousel(props, technologyCarousel) {
                       loop
                       playsInline
                       className={styles.x_slide_video}
-                      preload="auto"
+                      preload="metadata"
+                      loading="lazy"
                       onLoadedData={(e) => {
                         e.target.style.opacity = 1;
                       }}
@@ -172,19 +176,23 @@ export default function XCarousel(props, technologyCarousel) {
                   </div>
                 </figure>
               </div>
-              <div className={styles.x_slide_text_container}>
+              {/* <div className={styles.x_slide_text_container}>
                 <p className={styles.x_slide_text}>{props.content.text4}</p>
-              </div>
+              </div> */}
             </div>
           </SwiperSlide>
           <div
             className={`${styles.swiper_button_prev} swiper-button-prev`}
             onClick={handlePrevClick}
-          />
+          >
+            <span className="arrow" />
+          </div>
           <div
             className={`${styles.swiper_button_next} swiper-button-next`}
             onClick={handleNextClick}
-          />
+          >
+            <span className="arrow" />
+          </div>
         </Swiper>
       </div>
     </div>

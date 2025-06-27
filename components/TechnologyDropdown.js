@@ -1,12 +1,25 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Box, Typography, IconButton, Collapse, Divider } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useRouter } from "next/navigation";
 
-export default function TechnologyDropdown(props, dropDownSection) {
+export default function TechnologyDropdown(props) {
   const [open, setOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const shouldOpen = sessionStorage.getItem("openTechDropdown");
+    if (shouldOpen === "true") {
+      setOpen(true);
+      if (dropdownRef.current) {
+        dropdownRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+      sessionStorage.removeItem("openTechDropdown");
+    }
+  }, []);
+
   const toggleDropdown = () => setOpen((prev) => !prev);
   const router = useRouter();
 
@@ -14,13 +27,15 @@ export default function TechnologyDropdown(props, dropDownSection) {
 
   return (
     <Box
+      id={props.id}
+      ref={dropdownRef}
       sx={{
         py: { xs: 1, md: 2 },
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         width: "100%",
-        backgroundColor: "#000",
+        backgroundColor: "black",
         pb: { xs: 12, md: 10 },
       }}
     >
@@ -67,7 +82,7 @@ export default function TechnologyDropdown(props, dropDownSection) {
                 onClick={toggleDropdown}
               >
                 <Typography
-                  variant="h5"
+                  variant="h3"
                   fontWeight="bold"
                   sx={{
                     fontSize: { xs: "1.2rem", sm: "1.5rem", md: "2rem" },
@@ -84,6 +99,7 @@ export default function TechnologyDropdown(props, dropDownSection) {
                     p: 0,
                     m: 0,
                   }}
+                  aria-label="Expand dropdown"
                 >
                   <ExpandMoreIcon
                     sx={{
@@ -109,7 +125,7 @@ export default function TechnologyDropdown(props, dropDownSection) {
               sx={{
                 backgroundColor: "#5a5a5a",
                 px: 4,
-                py: { xs: 6, sm: 10 },
+                py: { xs: 2, sm: 6 },
                 textAlign: "center",
                 display: "flex",
                 flexDirection: "column",
@@ -136,6 +152,7 @@ export default function TechnologyDropdown(props, dropDownSection) {
                     transition: "transform 0.3s ease",
                     p: 0,
                   }}
+                  aria-label="Collapse dropdown"
                 >
                   <ExpandMoreIcon
                     sx={{
@@ -157,7 +174,7 @@ export default function TechnologyDropdown(props, dropDownSection) {
               {/* Dropdown Images */}
               <Box
                 component="img"
-                loader={() => "https:" + props.content.image1.fields.file.url}
+                // loader={() => "https:" + props.content.image1.fields.file.url}
                 src={"https:" + props.content.image1.fields.file.url}
                 alt="What's Your Tequila?"
                 sx={{
@@ -169,7 +186,7 @@ export default function TechnologyDropdown(props, dropDownSection) {
               />
               <Box
                 component="img"
-                loader={() => "https:" + props.content.image2.fields.file.url}
+                // loader={() => "https:" + props.content.image2.fields.file.url}
                 src={"https:" + props.content.image2.fields.file.url}
                 alt="What's Your Whisky?"
                 sx={{
@@ -181,7 +198,7 @@ export default function TechnologyDropdown(props, dropDownSection) {
               />
               <Box
                 component="img"
-                loader={() => "https:" + props.content.image3.fields.file.url}
+                // loader={() => "https:" + props.content.image3.fields.file.url}
                 src={"https:" + props.content.image3.fields.file.url}
                 alt="What's Your Beer?"
                 sx={{
@@ -193,7 +210,8 @@ export default function TechnologyDropdown(props, dropDownSection) {
               />
               <Box
                 component="img"
-                src="/images/Dropdown4.png"
+                // loader={() => "https:" + props.content.image4.fields.file.url}
+                src={"https:" + props.content.image4.fields.file.url}
                 alt="What's Your Cocktail?"
                 sx={{
                   width: { xs: "90%", sm: "60%" },

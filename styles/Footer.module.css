@@ -1,28 +1,24 @@
 .sectionSeven {
   background-color: #000000;
-  display: flex;
-  align-items: center;
-  position: relative;
   padding: 2rem 1rem;
 }
 
 .sectionSevenContent {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   width: 100%;
   position: relative;
 }
 
 .footerLinks {
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   color: white;
-  width: 100%;
+  text-align: left;
+  gap: 0.75rem;
 }
 
 .footerFirstLine,
 .footerSecondLine {
-  margin-bottom: 1rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -43,7 +39,6 @@
 }
 
 .footerLink:hover {
-  color: #ffffff !important;
   opacity: 0.8;
 }
 
@@ -65,29 +60,31 @@
 }
 
 .footerSvg {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
+  margin-top: 1rem;
+  align-self: flex-start;
+  transform: scale(1);
 }
 
-/* Tablet */
-@media (max-width: 768px) {
+/* Desktop and Laptop styles */
+@media (min-width: 1025px) {
   .footerSvg {
-    top: 1rem;
-    right: 1rem;
-    transform: scale(0.75);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-top: 0;
+  }
+}
+
+/* iPad and Tablets */
+@media (max-width: 1024px) {
+  .footerSvg {
+    transform: scale(0.85);
+    margin-top: 1rem;
+    align-self: flex-start;
   }
 
-  .footerLink {
-    font-size: 0.85rem;
-    line-height: 1.6;
-  }
-
-  .footerCopyright {
-    font-size: 0.85rem;
-    line-height: 1.6;
-  }
-
+  .footerLink,
+  .footerCopyright,
   .footerDisclaimer {
     font-size: 0.85rem;
     line-height: 1.6;
@@ -95,7 +92,13 @@
 }
 
 /* Mobile */
+/* ✅ Mobile: image on bottom left with small margin */
 @media (max-width: 480px) {
+  .sectionSevenContent {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .footerFirstLine,
   .footerSecondLine {
     flex-direction: column;
@@ -104,36 +107,28 @@
   }
 
   .footerItem {
-    flex-direction: row;
-    justify-content: flex-start;
     width: 100%;
     margin-bottom: 0.3rem;
   }
 
-  .footerItem:last-child {
-    margin-bottom: 0;
+  .footerSvg {
+    align-self: flex-start !important;
+    transform: scale(0.7);
+    margin-top: 0.5rem;
+
+    /* ✅ This adds space from the left edge */
+    margin-left: -1rem;
   }
 
-  .footerLink {
+  .footerLink,
+  .footerCopyright,
+  .footerDisclaimer {
     font-size: 0.8rem;
     line-height: 1.8;
   }
 
   .separator {
+    font-size: 0.8rem;
     margin-left: 0.4rem;
-    font-size: 0.8rem;
-  }
-
-  .footerCopyright,
-  .footerDisclaimer {
-    font-size: 0.8rem;
-    line-height: 1.8;
-    margin-bottom: 0.4rem;
-  }
-
-  .footerSvg {
-    top: 0.5rem;
-    right: 0.5rem;
-    transform: scale(0.6);
   }
 }

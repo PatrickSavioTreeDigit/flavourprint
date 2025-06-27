@@ -2,9 +2,9 @@ import { Box, Container, Typography } from "@mui/material";
 import Image from "next/image";
 import styles from "../styles/Story.module.css";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-export default function StorySection(props, storyContent,video ) {
+export default function StorySection(props) {
   return (
-    <Box component="section" className={styles.sectionThree}>
+    <Box component="section" className={styles.sectionThree} id={props.id}>
       <video
         className={styles.sectionThreeVideo}
         autoPlay
@@ -27,16 +27,19 @@ export default function StorySection(props, storyContent,video ) {
             <Typography variant="h2" className={styles.sectionTitle}>
               {props.content.text1}
             </Typography>
-            <Typography className={styles.sectionDescription}>
+            <Typography component="div" className={styles.sectionDescription}>
               {documentToReactComponents(props.content.storyContent1)}
             </Typography>
-            <Typography className={styles.sectionDescription}>
+            <Typography component="div" className={styles.sectionDescription}>
               {documentToReactComponents(props.content.storyContent2)}
             </Typography>
-            <Typography className={styles.sectionDescription}>
+            <Typography component="div" className={styles.sectionDescription}>
               {documentToReactComponents(props.content.storyContent3)}
             </Typography>
-            <Typography className={styles.sectionDescriptionBold}>
+            <Typography
+              component="div"
+              className={styles.sectionDescriptionBold}
+            >
               {documentToReactComponents(props.content.story2)}
             </Typography>
           </Box>
@@ -45,14 +48,12 @@ export default function StorySection(props, storyContent,video ) {
           <Box className={styles.imageSection}>
             <Box className={styles.imageWrapper}>
               <Image
-                loader={() => "https:" + props.content.image.fields.file.url}
                 src={"https:" + props.content.image.fields.file.url}
                 alt="Innovation Image"
                 width={500}
                 height={500}
                 quality={75}
                 className={styles.sectionImage}
-                priority
               />
             </Box>
           </Box>
