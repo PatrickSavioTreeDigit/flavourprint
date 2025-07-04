@@ -146,7 +146,7 @@ export default function XCarousel(props) {
             </div>
           </SwiperSlide>
           {/* Slide 4 */}
-          <SwiperSlide className={styles.x_carousel_slide}>
+          {/* <SwiperSlide className={styles.x_carousel_slide}>
             <div
               className={styles.x_carousel_slide_container}
               onClick={() => router.push("/cocktail")}
@@ -171,7 +171,7 @@ export default function XCarousel(props) {
                 </figure>
               </div>
             </div>
-          </SwiperSlide>
+          </SwiperSlide> */}
           {/* Navigation Buttons */}
           <div
             className={`${styles.swiper_button_prev} swiper-button-prev`}
