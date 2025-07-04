@@ -170,6 +170,16 @@
 
   .imageSection {
     max-width: 100%;
+    overflow: hidden;
+  }
+
+  .imageWrapper {
+    overflow: hidden;
+  }
+
+  .sectionImage {
+    width: 100%;
+    transform: none;
   }
 }
 
@@ -246,5 +256,36 @@
   .sectionImage {
     width: 180%;
     height: auto;
+  }
+}
+
+@media (max-width: 1366px) {
+  .sectionThreeContent {
+    flex-direction: column;
+    padding: 20px 40px;
+    gap: 40px;
+  }
+
+  .textSection {
+    max-width: 100%;
+  }
+
+  .textSection .sectionDescription,
+  .textSection .sectionDescriptionBold {
+    width: 100%;
+  }
+
+  .imageSection {
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .imageWrapper {
+    overflow: hidden;
+  }
+
+  .sectionImage {
+    width: 100%;
+    transform: none;
   }
 }

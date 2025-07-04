@@ -59,8 +59,14 @@
   transition: width 0.3s ease;
 }
 
-.navLink:hover::after,
+.navLink:hover::after {
+  width: 100%;
+}
 .navLink:focus::after {
+  width: 0%;
+}
+
+.navLink.active::after {
   width: 100%;
 }
 

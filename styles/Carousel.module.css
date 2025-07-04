@@ -79,13 +79,12 @@
 
 .x_carousel_slide {
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   transform: scale(1.08);
   opacity: 0.5;
   /* box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15); */
   /* border: 2px solid transparent; */
-  box-shadow: 0 12px 40px 0, 0 8px 32px rgba(0, 0, 0, 0.25);
+  /* box-shadow: 0 12px 40px 0, 0 8px 32px rgba(0, 0, 0, 0.25); */
   /* border: 2px solid #ffa726; */
   opacity: 1;
   z-index: 2;
@@ -96,17 +95,17 @@
   transform: scale(1.08);
   opacity: 1;
   z-index: 2;
-  box-shadow: 0 12px 40px 0 rgba(255, 167, 38, 0.35),
-    0 8px 32px rgba(0, 0, 0, 0.25);
+  /* box-shadow: 0 12px 40px 0 rgba(255, 167, 38, 0.35),
+    0 8px 32px rgba(0, 0, 0, 0.25); */
   /* border: 2px solid #ffa726; */
   filter: drop-shadow(0 0 16px #ffa72688);
 }
 
 .x_carousel_slide:hover {
   transform: scale(1.12);
-  box-shadow: 0 16px 48px 0 rgba(255, 167, 38, 0.45),
-    0 12px 40px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0 16px 48px 0 rgba(255, 167, 38, 0.45); */
   opacity: 1;
+  background: transparent;
   /* border: 2px solid #ffb74d; */
 }
 
@@ -116,12 +115,12 @@
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  background: linear-gradient(
+  /* background: linear-gradient(
     to top,
     rgba(12, 12, 12, 0.55) 0%,
     rgba(12, 12, 12, 0.15) 60%,
     transparent 100%
-  );
+  ); */
 }
 
 .swiper_button_prev,

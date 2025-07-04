@@ -108,9 +108,9 @@ export default function BlackScreenPage({ drink, content }) {
           sx={{
             width: { xs: "100%", md: "35%" },
             height: {
-              xs: "250px",
-              sm: "360px", // iPad size
-              md: "600px",
+              xs: "350px",
+              sm: "490px", // iPad size
+              md: "700px",
             },
             overflow: "hidden",
             flexShrink: 0,
@@ -135,7 +135,7 @@ export default function BlackScreenPage({ drink, content }) {
               src={`https:${content.video.fields.file.url}`}
               alt="Main Visual"
               fill
-              objectFit="cover"
+              className="mainVisualResponsiveImage"
               sizes="(max-width: 1024px) 100vw, 35vw"
             />
           )}
@@ -248,10 +248,16 @@ export default function BlackScreenPage({ drink, content }) {
           <Image
             src={`https:${content.image3.fields.file.url}`}
             alt="Beer background image"
-            fill
-            objectFit="cover"
-            sizes="100vw"
-            style={{ opacity: 1, pointerEvents: "none" }}
+            width={1200}
+            height={800}
+            objectFit="contain"
+            style={{
+              width: "100%",
+              height: "100%",
+              background: "#000",
+              opacity: 1,
+              pointerEvents: "none",
+            }}
           />
         </Box>
         <Box sx={{ position: "relative", zIndex: 1 }}>

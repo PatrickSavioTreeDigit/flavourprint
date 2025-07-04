@@ -11,6 +11,7 @@ export default function Header(props) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeTargetId, setActiveTargetId] = useState(null);
+  const [isHomePage, setIsHomePage] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -31,15 +32,18 @@ export default function Header(props) {
     if (activeTargetId === targetId) {
       router.push("/");
       setActiveTargetId(null);
+      setIsHomePage(true);
     } else {
       const targetElement = document.getElementById(targetId);
       if (targetElement) {
         window.history.pushState({}, "", `/${targetId}`);
         targetElement.scrollIntoView({ behavior: "smooth" });
         setActiveTargetId(targetId);
+        setIsHomePage(false);
       } else {
         router.push(`/#${targetId}`);
         setActiveTargetId(targetId);
+        setIsHomePage(false);
       }
     }
 
@@ -66,21 +70,29 @@ export default function Header(props) {
           <div className={styles.navLinks}>
             <a
               href="/story"
-              className={styles.navLink}
+              className={`${styles.navLink} ${
+                activeTargetId === "story" && !isHomePage ? styles.active : ""
+              }`}
               onClick={(e) => handleNavClick(e, "story")}
             >
               {props.content.text1}
             </a>
             <a
               href="/technologies"
-              className={styles.navLink}
+              className={`${styles.navLink} ${
+                activeTargetId === "technologies" && !isHomePage
+                  ? styles.active
+                  : ""
+              }`}
               onClick={(e) => handleNavClick(e, "technologies")}
             >
               {props.content.text2}
             </a>
             <a
               href="/contact"
-              className={styles.navLink}
+              className={`${styles.navLink} ${
+                activeTargetId === "contact" && !isHomePage ? styles.active : ""
+              }`}
               onClick={(e) => handleNavClick(e, "contact")}
             >
               {props.content.text3}
@@ -120,7 +132,9 @@ export default function Header(props) {
             <li className={styles.drawerListItem}>
               <a
                 href="/story"
-                className={styles.drawerLink}
+                className={`${styles.drawerLink} ${
+                  activeTargetId === "story" && !isHomePage ? styles.active : ""
+                }`}
                 onClick={(e) => handleNavClick(e, "story")}
               >
                 {props.content.text1}
@@ -129,7 +143,11 @@ export default function Header(props) {
             <li className={styles.drawerListItem}>
               <a
                 href="/technologies"
-                className={styles.drawerLink}
+                className={`${styles.drawerLink} ${
+                  activeTargetId === "technologies" && !isHomePage
+                    ? styles.active
+                    : ""
+                }`}
                 onClick={(e) => handleNavClick(e, "technologies")}
               >
                 {props.content.text2}
@@ -138,7 +156,11 @@ export default function Header(props) {
             <li className={styles.drawerListItem}>
               <a
                 href="/contact"
-                className={styles.drawerLink}
+                className={`${styles.drawerLink} ${
+                  activeTargetId === "contact" && !isHomePage
+                    ? styles.active
+                    : ""
+                }`}
                 onClick={(e) => handleNavClick(e, "contact")}
               >
                 {props.content.text3}

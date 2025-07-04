@@ -13,15 +13,11 @@ export default function XCarousel(props) {
   const router = useRouter();
 
   const handleNextClick = () => {
-    if (swiperInstance) {
-      swiperInstance.slidePrev();
-    }
+    if (swiperInstance) swiperInstance.slidePrev();
   };
 
   const handlePrevClick = () => {
-    if (swiperInstance) {
-      swiperInstance.slidePrev();
-    }
+    if (swiperInstance) swiperInstance.slidePrev();
   };
 
   return (
@@ -42,39 +38,35 @@ export default function XCarousel(props) {
           {props.content.text1}
         </Typography>
       </div>
+
       <div className={styles.x_carousel_swiper_wrapper}>
         <Swiper
           centeredSlides={false}
           loop={true}
+          slidesPerView={3}
+          slidesPerGroup={1}
+          spaceBetween={30}
+          speed={600}
+          allowTouchMove={true}
+          watchSlidesProgress={true}
           navigation={{
             nextEl: `.${styles.swiper_button_next}`,
             prevEl: `.${styles.swiper_button_prev}`,
           }}
-          slidesPerView={3}
           breakpoints={{
             1024: { slidesPerView: 3 },
             768: { slidesPerView: 2 },
             0: { slidesPerView: 1 },
           }}
           modules={[Navigation]}
-          className={styles.x_carousel_swiper_container}
           onSwiper={setSwiperInstance}
-          speed={600}
-          spaceBetween={30}
-          allowTouchMove={true}
-          watchSlidesProgress={true}
+          className={styles.x_carousel_swiper_container}
         >
           {/* Slide 1 */}
-          <SwiperSlide
-            className={styles.x_carousel_slide}
-            data-index={0}
-            onClick={() => router.push("/whisky")}
-          >
+          <SwiperSlide className={styles.x_carousel_slide}>
             <div
-              aria-label="What's Your Whisky?"
-              role="button"
-              tabIndex="0"
               className={styles.x_carousel_slide_container}
+              onClick={() => router.push("/whisky")}
             >
               <div className={styles.x_slide_image_container}>
                 <figure className={styles.x_slide_image_wrapper}>
@@ -87,10 +79,6 @@ export default function XCarousel(props) {
                       playsInline
                       className={styles.x_slide_video}
                       preload="metadata"
-                      loading="lazy"
-                      onLoadedData={(e) => {
-                        e.target.style.opacity = 1;
-                      }}
                     >
                       <source src={"https:" + props.image1.fields.file.url} />
                     </video>
@@ -100,34 +88,25 @@ export default function XCarousel(props) {
                   </div>
                 </figure>
               </div>
-              {/* <div className={styles.x_slide_text_container}>
-                <p className={styles.x_slide_text}>{props.content.text2}</p>
-              </div> */}
             </div>
           </SwiperSlide>
+
           {/* Slide 2 */}
-          <SwiperSlide
-            className={styles.x_carousel_slide}
-            data-index={1}
-            onClick={() => router.push("/tequila")}
-          >
+          <SwiperSlide className={styles.x_carousel_slide}>
             <div
-              aria-label="What's Your Tequila?"
-              role="button"
-              tabIndex="0"
               className={styles.x_carousel_slide_container}
+              onClick={() => router.push("/tequila")}
             >
               <div className={styles.x_slide_image_container}>
                 <figure className={styles.x_slide_image_wrapper}>
                   <div className={styles.shadow_layer} />
                   <div className={styles.video_wrapper}>
                     <Image
-                      alt="What's Your Tequila?"
+                      alt="Tequila"
                       src={"https:" + props.content.image2.fields.file.url}
+                      width={400}
+                      height={600}
                       className={styles.x_slide_image}
-                      fill
-                      sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
-                      objectFit="cover"
                     />
                     <div className={styles.video_head}>
                       <h2>{props.content.text3}</h2>
@@ -135,22 +114,14 @@ export default function XCarousel(props) {
                   </div>
                 </figure>
               </div>
-              {/* <div className={styles.x_slide_text_container}>
-                <p className={styles.x_slide_text}>{props.content.text3}</p>
-              </div> */}
             </div>
           </SwiperSlide>
+
           {/* Slide 3 */}
-          <SwiperSlide
-            className={styles.x_carousel_slide}
-            data-index={2}
-            onClick={() => router.push("/beer")}
-          >
+          <SwiperSlide className={styles.x_carousel_slide}>
             <div
-              aria-label="What's Your Beer?"
-              role="button"
-              tabIndex="0"
               className={styles.x_carousel_slide_container}
+              onClick={() => router.push("/beer")}
             >
               <div className={styles.x_slide_image_container}>
                 <figure className={styles.x_slide_image_wrapper}>
@@ -163,10 +134,6 @@ export default function XCarousel(props) {
                       playsInline
                       className={styles.x_slide_video}
                       preload="metadata"
-                      loading="lazy"
-                      onLoadedData={(e) => {
-                        e.target.style.opacity = 1;
-                      }}
                     >
                       <source src={"https:" + props.image3.fields.file.url} />
                     </video>
@@ -176,11 +143,36 @@ export default function XCarousel(props) {
                   </div>
                 </figure>
               </div>
-              {/* <div className={styles.x_slide_text_container}>
-                <p className={styles.x_slide_text}>{props.content.text4}</p>
-              </div> */}
             </div>
           </SwiperSlide>
+          {/* Slide 4 */}
+          <SwiperSlide className={styles.x_carousel_slide}>
+            <div
+              className={styles.x_carousel_slide_container}
+              onClick={() => router.push("/cocktail")}
+            >
+              <div className={styles.x_slide_image_container}>
+                <figure className={styles.x_slide_image_wrapper}>
+                  <div className={styles.shadow_layer} />
+                  <div className={styles.video_wrapper}>
+                    <Image
+                      alt="Tequila"
+                      src={"https:" + props.content.image4.fields.file.url}
+                      width={400}
+                      height={600}
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className={styles.x_slide_image}
+                      style={{ objectFit: "contain" }}
+                    />
+                    <div className={styles.video_head}>
+                      <h2>{props.content.text6}</h2>
+                    </div>
+                  </div>
+                </figure>
+              </div>
+            </div>
+          </SwiperSlide>
+          {/* Navigation Buttons */}
           <div
             className={`${styles.swiper_button_prev} swiper-button-prev`}
             onClick={handlePrevClick}

@@ -232,6 +232,8 @@ export async function getStaticProps() {
       }),
     ]);
 
+    console.log("carousel", CarouselContent.items[0]?.fields);
+
     return {
       props: {
         navContent: res.items[0]?.fields || null,
